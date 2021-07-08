@@ -21,11 +21,12 @@ steps:
   displayName: 'npm install and build'
 
 - task: Docker@2
+  displayName: 'ecommerce.dockerfile'
   inputs:
     containerRegistry: 'Erick Container Registry'
     repository: 'ecommerce-store-app'
     command: 'buildAndPush'
     Dockerfile: '**/ecommerce.dockerfile'
-    displayName: 'ecommerce.dockerfile'
+
 
 
