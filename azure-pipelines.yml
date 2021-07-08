@@ -21,12 +21,18 @@ steps:
   displayName: 'npm install and build'
 
 - task: Docker@2
-  displayName: 'ecommerce.dockerfile'
+  displayName: 'Build ecommerce.dockerfile'
   inputs:
     containerRegistry: 'Erick Container Registry'
     repository: 'ecommerce-store-app'
     command: 'buildAndPush'
     Dockerfile: '**/ecommerce.dockerfile'
 
-
+- task: Docker@2
+  displayName: 'Build jserver.dockerfile'
+  inputs:
+    containerRegistry: 'Erick Container Registry'
+    repository: 'json-server'
+    command: 'buildAndPush'
+    Dockerfile: '**/jserver.dockerfile'
 
