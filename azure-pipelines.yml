@@ -26,5 +26,6 @@ steps:
     repository: 'ecommerce-store-app'
     command: 'buildAndPush'
     Dockerfile: '**/ecommerce.dockerfile'
+    displayName: 'ecommerce.dockerfile'
 
 
