@@ -1,0 +1,150 @@
+{
+  "store": {
+    "dadosEstabelecimento": {
+      "titulo": null,
+      "endereco": null,
+      "cnpj": null,
+      "status": {
+        "codigo": 1,
+        "descricao": "ATIVO"
+      }
+    },
+    "dadosCliente": {
+      "nome": "Vinícius Claudino Rodrigues",
+      "endereco": [
+        {
+          "logradouro": "Rua Apulcro de Assunção",
+          "numero": "845",
+          "complemento": null,
+          "bairro": "San Martin",
+          "cidade": "Recife",
+          "estado": "PE"
+        }
+      ],
+      "cpf": "05949221435",
+      "telefone": "81996755608",
+      "status": {
+        "codigo": 1,
+        "descricao": "ATIVO"
+      }
+    },
+    "historico": {
+      "pedidos": null
+    },
+    "pedido": {
+      "pedidoId": 1,
+      "enderecoEntrega": null,
+      "cliente": null,
+      "store": null,
+      "dataCriacao": null,
+      "dataAtualizacao": null,
+      "formasPagamento": null,
+      "formaPagamentoSelecionada": null,
+      "status": {
+        "codigo": 1,
+        "descricao": "ATUAL"
+      },
+      "itens": []
+    },
+    "ofertas": [
+      {
+        "ofertaId": 1,
+        "titulo": "Camiseta Addidas",
+        "descricao": "camiseta masculina t-shirt.",
+        "especificacao": "Básica, a Camisa Térmica Manga Longa Adams é perfeita para complementar o visual esportivo e ajudar a manter a temperatura corporal com a redução da vibração muscular. Seu caimento é personalizado e apresenta gola careca com tira interna em tecido que ajuda a diminuir o atrito de contato. Ideal para vestir sob a camisa de treino, a Camisa Térmica Manga Longa conta com o padrão Adams de qualidade. Aproveite o ótimo preço e garanta a sua!",
+        "posicao": 1,
+        "valor": 139.9,
+        "disconto": 10,
+        "categorias": [
+          {
+            "categoriaId": 1,
+            "titulo": "Promoções",
+            "posicao": 1,
+            "status": {
+              "codigo": 1,
+              "descricao": "ATIVO"
+            }
+          }
+        ]
+      },
+      {
+        "ofertaId": 2,
+        "titulo": "Camiseta Nike",
+        "descricao": "camiseta masculina t-shirt.",
+        "especificacao": "Básica, a Camisa Térmica Manga Longa Adams é perfeita para complementar o visual esportivo e ajudar a manter a temperatura corporal com a redução da vibração muscular. Seu caimento é personalizado e apresenta gola careca com tira interna em tecido que ajuda a diminuir o atrito de contato. Ideal para vestir sob a camisa de treino, a Camisa Térmica Manga Longa conta com o padrão Adams de qualidade. Aproveite o ótimo preço e garanta a sua!",
+        "posicao": 1,
+        "valor": 239.9,
+        "disconto": 10,
+        "categorias": [
+          {
+            "categoriaId": 1,
+            "titulo": "Promoções",
+            "posicao": 1,
+            "status": {
+              "codigo": 1,
+              "descricao": "ATIVO"
+            }
+          }
+        ]
+      },
+      {
+        "ofertaId": 3,
+        "titulo": "Camiseta Speed",
+        "descricao": "camiseta masculina t-shirt.",
+        "especificacao": "Básica, a Camisa Térmica Manga Longa Adams é perfeita para complementar o visual esportivo e ajudar a manter a temperatura corporal com a redução da vibração muscular. Seu caimento é personalizado e apresenta gola careca com tira interna em tecido que ajuda a diminuir o atrito de contato. Ideal para vestir sob a camisa de treino, a Camisa Térmica Manga Longa conta com o padrão Adams de qualidade. Aproveite o ótimo preço e garanta a sua!",
+        "posicao": 1,
+        "valor": 39.9,
+        "disconto": 10,
+        "categorias": [
+          {
+            "categoriaId": 1,
+            "titulo": "Promoções",
+            "posicao": 1,
+            "status": {
+              "codigo": 1,
+              "descricao": "ATIVO"
+            }
+          },
+          {
+            "categoriaId": 2,
+            "titulo": "Homens",
+            "posicao": 2,
+            "status": {
+              "codigo": 1,
+              "descricao": "ATIVO"
+            }
+          }
+        ]
+      },
+      {
+        "ofertaId": 4,
+        "titulo": "Calça Jeans",
+        "descricao": "camiseta masculina t-shirt.",
+        "especificacao": "Básica, a Camisa Térmica Manga Longa Adams é perfeita para complementar o visual esportivo e ajudar a manter a temperatura corporal com a redução da vibração muscular. Seu caimento é personalizado e apresenta gola careca com tira interna em tecido que ajuda a diminuir o atrito de contato. Ideal para vestir sob a camisa de treino, a Camisa Térmica Manga Longa conta com o padrão Adams de qualidade. Aproveite o ótimo preço e garanta a sua!",
+        "posicao": 1,
+        "valor": 39.9,
+        "disconto": 10,
+        "categorias": [
+          {
+            "categoriaId": 1,
+            "titulo": "",
+            "posicao": 1,
+            "status": {
+              "codigo": 1,
+              "descricao": "ATIVO"
+            }
+          },
+          {
+            "categoriaId": 2,
+            "titulo": "Homens",
+            "posicao": 2,
+            "status": {
+              "codigo": 1,
+              "descricao": "ATIVO"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
