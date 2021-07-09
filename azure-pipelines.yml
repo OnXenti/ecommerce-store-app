@@ -57,3 +57,30 @@ stages:
           Dockerfile: '$(dockerfilePathjsvr)'
           tags: '$(IMAGE_JSVR)'
 
+
+  - stage: Deployment
+    displayName: Deployment to k8s
+    jobs:  
+    - job: Deploy
+      displayName: Deploy to k8s 
+      pool:
+        vmImage: ubuntu-latest
+      steps:
+
+      - task: CopyFiles@2
+        displayName: Copy k8s ecommerce files
+        inputs:
+          SourceFolder: '''k8s-files/ecommerce'''
+          Contents: |
+            deployment.yml
+            service.yml
+          TargetFolder: '''$(Build.ArtifactStagingDirectory)'''
+
+      - task: CopyFiles@2
+        displayName: Copy k8s json-server files
+        inputs:
+          SourceFolder: '''k8s-files/jserver'''
+          Contents: |
+            deployment.yml
+            service.yml
+          TargetFolder: '''$(Build.ArtifactStagingDirectory)'''
