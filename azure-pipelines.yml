@@ -94,4 +94,4 @@ stages:
             $(Build.ArtifactStagingDirectory)/service.yml
           kubernetesServiceConnection: 'aksclusterericklab'
           containers: |
-            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
+            az400erickregistry.azurecr.io/$(imageRepositoryecomm):$(IMAGE_ECOMM)
