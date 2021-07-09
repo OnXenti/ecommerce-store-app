@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-store-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecommerce-store-app
+  template:
+    metadata:
+      labels:
+        app: ecommerce-store-app
+    spec:
+      containers:
+      - name: ecommerce-store-app
+        image: az400erickregistry.azurecr.io/ecommerce-store-app:#{IMAGE_TAG}#
+        ports:
+        - containerPort: 3000
