@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: ecommerce-store-app
-        image: az400erickregistry.azurecr.io/ecommerce-store-app:#{IMAGE_TAG}#
+        image: az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
         ports:
         - containerPort: 3000
