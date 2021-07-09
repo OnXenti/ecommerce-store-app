@@ -72,8 +72,8 @@ stages:
         inputs:
           SourceFolder: 'k8s-files/ecommerce'
           Contents: |
-            deployment.yml
-            service.yml
+            deployment.yaml
+            service.yaml
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
       - task: KubernetesManifest@0
@@ -81,8 +81,8 @@ stages:
         inputs:
           action: 'deploy'
           manifests: |
-            $(Build.ArtifactStagingDirectory)/deployment.yml
-            $(Build.ArtifactStagingDirectory)/service.yml
+            $(Build.ArtifactStagingDirectory)/deployment.yaml
+            $(Build.ArtifactStagingDirectory)/service.yaml
           kubernetesServiceConnection: 'aksclusterericklab'
           containers: |
             az400erickregistry.azurecr.io/$(imageRepositoryecomm):$(IMAGE_ECOMM)
@@ -92,7 +92,7 @@ stages:
 #        inputs:
 #          SourceFolder: 'k8s-files/jserver'
 #          Contents: |
-#            deployment.yml
-#            service.yml
+#            deployment.yaml
+#            service.yaml
 #          TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
