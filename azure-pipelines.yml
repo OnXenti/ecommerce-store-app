@@ -70,17 +70,17 @@ stages:
       - task: CopyFiles@2
         displayName: Copy k8s ecommerce files
         inputs:
-          SourceFolder: '''ecommerce-store-app/k8s-files/ecommerce'''
+          SourceFolder: 'ecommerce-store-app/k8s-files/ecommerce'
           Contents: |
             deployment.yml
             service.yml
-          TargetFolder: '''$(Build.ArtifactStagingDirectory)'''
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
       - task: CopyFiles@2
         displayName: Copy k8s json-server files
         inputs:
-          SourceFolder: '''ecommerce-store-app/k8s-files/jserver'''
+          SourceFolder: 'ecommerce-store-app/k8s-files/jserver'
           Contents: |
             deployment.yml
             service.yml
-          TargetFolder: '''$(Build.ArtifactStagingDirectory)'''
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
