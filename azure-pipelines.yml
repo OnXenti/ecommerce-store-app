@@ -5,9 +5,7 @@
 
 trigger:
 - master
-
-#pool:
-#  vmImage: ubuntu-latest
+- development
 
 variables:
 # For ecommerce
