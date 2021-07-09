@@ -85,7 +85,7 @@ stages:
             $(Build.ArtifactStagingDirectory)/service.yaml
           kubernetesServiceConnection: 'aksclusterericklab'
           containers: |
-            az400erickregistry.azurecr.io/ecommerce-store-app
+            az400erickregistry.azurecr.io/ecommerce-store-app:93
 
 #      - task: CopyFiles@2
 #        displayName: Copy k8s json-server files
