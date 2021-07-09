@@ -9,6 +9,18 @@ trigger:
 #pool:
 #  vmImage: ubuntu-latest
 
+variables:
+# For ecommerce
+  imageRepositoryecomm: 'ecommerce-store-app'
+  containerRegistryecomm: 'Erick Container Registry'
+  dockerfilePathecomm: '**/ecommerce.dockerfile'
+  IMAGE_ECOMM: '$(Build.BuildId)'
+# For Json Server
+  imageRepositoryjsvr: 'json-server'
+  containerRegistryjsvr: 'Erick Container Registry'
+  dockerfilePathjsvr: '**/jserver.dockerfile'
+  IMAGE_JSVR: '$(Build.BuildId)'
+
 stages:
   - stage: Build
     displayName: Build and run tests
@@ -32,16 +44,18 @@ stages:
       - task: Docker@2
         displayName: 'Build ecommerce.dockerfile'
         inputs:
-          containerRegistry: 'Erick Container Registry'
-          repository: 'ecommerce-store-app'
+          containerRegistry: '$(containerRegistryecomm)'
+          repository: '$(imageRepositoryecomm)'
           command: 'buildAndPush'
-          Dockerfile: '**/ecommerce.dockerfile'
+          Dockerfile: '$(dockerfilePathecomm)'
+          tags: '(IMAGE_ECOMM)'
 
       - task: Docker@2
         displayName: 'Build jserver.dockerfile'
         inputs:
-          containerRegistry: 'Erick Container Registry'
-          repository: 'json-server'
+          containerRegistry: '$(containerRegistryjsvr)'
+          repository: '$(imageRepositoryjsvr)'
           command: 'buildAndPush'
-          Dockerfile: '**/jserver.dockerfile'
+          Dockerfile: '$(dockerfilePathjsvr)'
+          tags: '(IMAGE_JSVR)'
 
