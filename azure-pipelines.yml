@@ -48,7 +48,7 @@ stages:
           repository: '$(imageRepositoryecomm)'
           command: 'buildAndPush'
           Dockerfile: '$(dockerfilePathecomm)'
-          tags: '(IMAGE_ECOMM)'
+          tags: '$(IMAGE_ECOMM)'
 
       - task: Docker@2
         displayName: 'Build jserver.dockerfile'
@@ -57,5 +57,5 @@ stages:
           repository: '$(imageRepositoryjsvr)'
           command: 'buildAndPush'
           Dockerfile: '$(dockerfilePathjsvr)'
-          tags: '(IMAGE_JSVR)'
+          tags: '$(IMAGE_JSVR)'
 
