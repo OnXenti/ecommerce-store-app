@@ -75,7 +75,7 @@ stages:
             service.yaml
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-      - task: FileTransform@1
+      - task: replacetokens@3
         displayName: "Replacing tokens with the definied variables"
         inputs:
           targetFiles: "$(Build.ArtifactStagingDirectory)/k8s-files/*.yaml"
