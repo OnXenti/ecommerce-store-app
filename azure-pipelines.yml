@@ -98,7 +98,7 @@ stages:
             $(Build.ArtifactStagingDirectory)/service.yaml
           kubernetesServiceConnection: 'aksclusterericklab'
           containers: |
-            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
+            az400erickregistry.azurecr.io/$(imageRepositoryecomm):$(IMAGE_ECOMM)
 
 #      - task: CopyFiles@2
 #        displayName: Copy k8s json-server files
