@@ -78,7 +78,7 @@ stages:
       - task: replacetokens@3
         displayName: "Replacing ecommerce tokens with the definied variables"
         inputs:
-          targetFiles: "$(Build.ArtifactStagingDirectory)/k8s-files/ecommerce/*.yaml"
+          targetFiles: "$(Build.ArtifactStagingDirectory)/*.yaml"
           verbosity: "detailed"
           encoding: "auto"
           writeBOM: false
