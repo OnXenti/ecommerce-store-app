@@ -57,7 +57,6 @@ stages:
           Dockerfile: '$(dockerfilePathjsvr)'
           tags: '$(IMAGE_JSVR)'
 
-
   - stage: Deployment
     displayName: Deployment to k8s
     jobs:  
@@ -65,42 +64,41 @@ stages:
       displayName: Deploy to k8s 
       pool:
         vmImage: ubuntu-latest
-        strategy: 
-            runOnce:
-                    deploy:
-                        steps:
-                          - checkout: self
-                            displayName: Downloading the repository
-                          - task: CopyFiles@2
-                            displayName: Copy k8s ecommerce files
-                            inputs:
-                              SourceFolder: 'k8s-files/ecommerce'
-                              Contents: |
-                                deployment.yaml
-                                service.yaml
-                              TargetFolder: '$(Build.ArtifactStagingDirectory)'
-                              verbosity: 'detailed'
-                              encoding: 'auto'
-                              writeBOM: false
-                              actionOnMissing: 'fail'
-                              keepToken: false
-                              tokenPrefix: '#{'
-                              tokenSuffix: '}#'
-                              useLegacyPattern: false
-                              enableTelemetry: true
+      steps:
 
-          
+      - task: CopyFiles@2
+        displayName: Copy k8s ecommerce files
+        inputs:
+          SourceFolder: 'k8s-files/ecommerce'
+          Contents: |
+            deployment.yaml
+            service.yaml
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-                          - task: KubernetesManifest@0
-                            displayName: Deploy ecommerce-store-app
-                            inputs:
-                              action: 'deploy'
-                              manifests: |
-                                $(Build.ArtifactStagingDirectory)/deployment.yaml
-                                $(Build.ArtifactStagingDirectory)/service.yaml
-                              kubernetesServiceConnection: 'aksclusterericklab'
-                              containers: |
-                                az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
+      - task: replacetokens@3
+        displayName: "Replacing tokens with the definied variables"
+        inputs:
+          targetFiles: "$(Build.ArtifactStagingDirectory)/k8s-files/*.yaml"
+          verbosity: "detailed"
+          encoding: "auto"
+          writeBOM: false
+          actionOnMissing: "fail"
+          keepToken: false
+          tokenPrefix: "#{"
+          tokenSuffix: "}#"
+          useLegacyPattern: false
+          enableTelemetry: true
+
+      - task: KubernetesManifest@0
+        displayName: Deploy ecommerce-store-app
+        inputs:
+          action: 'deploy'
+          manifests: |
+            $(Build.ArtifactStagingDirectory)/deployment.yaml
+            $(Build.ArtifactStagingDirectory)/service.yaml
+          kubernetesServiceConnection: 'aksclusterericklab'
+          containers: |
+            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
 
 #      - task: CopyFiles@2
 #        displayName: Copy k8s json-server files
