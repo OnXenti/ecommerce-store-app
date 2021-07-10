@@ -99,15 +99,21 @@ stages:
           containers: |
             az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
 
-#      - task: KubernetesManifest@0
-#        displayName: Deploy ecommerce-store-app service
-#        inputs:
-#          action: 'deploy'
-#          manifests: |
-#            $(Build.ArtifactStagingDirectory)/service.yaml
-#          kubernetesServiceConnection: 'aksclusterericklab'
-#          containers: |
-#            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
+      - task: KubernetesManifest@0
+        displayName: Deploy ecommerce-store-app service
+        inputs:
+          action: 'deploy'
+          manifests: |
+            $(Build.ArtifactStagingDirectory)/service.yaml
+          kubernetesServiceConnection: 'aksclusterericklab'
+          containers: |
+            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
+
+      - task: DeleteFiles@1
+        displayName: Delete ecommerce target files
+        inputs:
+          SourceFolder: '$(Build.ArtifactStagingDirectory)'
+          Contents: '*'
 
       - task: CopyFiles@2
         displayName: Copy k8s json-server files
@@ -141,3 +147,9 @@ stages:
           kubernetesServiceConnection: 'aksclusterericklab'
           containers: |
             az400erickregistry.azurecr.io/#{imageRepositoryjsvr}#:#{IMAGE_JSVR}#
+
+      - task: DeleteFiles@1
+        displayName: Delete jserver target files
+        inputs:
+          SourceFolder: '$(Build.ArtifactStagingDirectory)'
+          Contents: '*'
