@@ -76,9 +76,9 @@ stages:
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
       - task: replacetokens@3
-        displayName: "Replacing tokens with the definied variables"
+        displayName: "Replacing ecommerce tokens with the definied variables"
         inputs:
-          targetFiles: "$(Build.ArtifactStagingDirectory)/k8s-files/*.yaml"
+          targetFiles: "$(Build.ArtifactStagingDirectory)/k8s-files/ecommerce/*.yaml"
           verbosity: "detailed"
           encoding: "auto"
           writeBOM: false
@@ -98,7 +98,7 @@ stages:
             $(Build.ArtifactStagingDirectory)/service.yaml
           kubernetesServiceConnection: 'aksclusterericklab'
           containers: |
-            az400erickregistry.azurecr.io/$(imageRepositoryecomm):$(IMAGE_ECOMM)
+            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
 
 #      - task: CopyFiles@2
 #        displayName: Copy k8s json-server files
