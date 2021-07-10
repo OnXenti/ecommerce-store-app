@@ -90,21 +90,21 @@ stages:
           enableTelemetry: true
 
       - task: KubernetesManifest@0
-        displayName: Deploy ecommerce-store-app deployment
-        inputs:
-          action: 'deploy'
-          manifests: |
-            $(Build.ArtifactStagingDirectory)/deployment.yaml
-          kubernetesServiceConnection: 'aksclusterericklab'
-          containers: |
-            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
-
-      - task: KubernetesManifest@0
         displayName: Deploy ecommerce-store-app service
         inputs:
           action: 'deploy'
           manifests: |
             $(Build.ArtifactStagingDirectory)/service.yaml
+          kubernetesServiceConnection: 'aksclusterericklab'
+          containers: |
+            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
+
+      - task: KubernetesManifest@0
+        displayName: Deploy ecommerce-store-app deployment
+        inputs:
+          action: 'deploy'
+          manifests: |
+            $(Build.ArtifactStagingDirectory)/deployment.yaml
           kubernetesServiceConnection: 'aksclusterericklab'
           containers: |
             az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
@@ -137,6 +137,16 @@ stages:
           tokenSuffix: "}#"
           useLegacyPattern: false
           enableTelemetry: true
+
+      - task: KubernetesManifest@0
+        displayName: Deploy json-server service
+        inputs:
+          action: 'deploy'
+          manifests: |
+            $(Build.ArtifactStagingDirectory)/service.yaml
+          kubernetesServiceConnection: 'aksclusterericklab'
+          containers: |
+            az400erickregistry.azurecr.io/#{imageRepositoryjsvr}#:#{IMAGE_JSVR}#
 
       - task: KubernetesManifest@0
         displayName: Deploy json-server deployment
