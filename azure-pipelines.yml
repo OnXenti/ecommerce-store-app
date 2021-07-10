@@ -90,22 +90,54 @@ stages:
           enableTelemetry: true
 
       - task: KubernetesManifest@0
-        displayName: Deploy ecommerce-store-app
+        displayName: Deploy ecommerce-store-app deployment
         inputs:
           action: 'deploy'
           manifests: |
             $(Build.ArtifactStagingDirectory)/deployment.yaml
-            $(Build.ArtifactStagingDirectory)/service.yaml
           kubernetesServiceConnection: 'aksclusterericklab'
           containers: |
             az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
 
-#      - task: CopyFiles@2
-#        displayName: Copy k8s json-server files
+#      - task: KubernetesManifest@0
+#        displayName: Deploy ecommerce-store-app service
 #        inputs:
-#          SourceFolder: 'k8s-files/jserver'
-#          Contents: |
-#            deployment.yaml
-#            service.yaml
-#          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+#          action: 'deploy'
+#          manifests: |
+#            $(Build.ArtifactStagingDirectory)/service.yaml
+#          kubernetesServiceConnection: 'aksclusterericklab'
+#          containers: |
+#            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
 
+      - task: CopyFiles@2
+        displayName: Copy k8s json-server files
+        inputs:
+          SourceFolder: 'k8s-files/jserver'
+          Contents: |
+            deployment.yaml
+            service.yaml
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+      - task: replacetokens@3
+        displayName: "Replacing jserver tokens with the definied variables"
+        inputs:
+          targetFiles: "$(Build.ArtifactStagingDirectory)/*.yaml"
+          verbosity: "detailed"
+          encoding: "auto"
+          writeBOM: false
+          actionOnMissing: "fail"
+          keepToken: false
+          tokenPrefix: "#{"
+          tokenSuffix: "}#"
+          useLegacyPattern: false
+          enableTelemetry: true
+
+      - task: KubernetesManifest@0
+        displayName: Deploy json-server deployment
+        inputs:
+          action: 'deploy'
+          manifests: |
+            $(Build.ArtifactStagingDirectory)/deployment.yaml
+          kubernetesServiceConnection: 'aksclusterericklab'
+          containers: |
+            az400erickregistry.azurecr.io/#{imageRepositoryjsvr}#:#{IMAGE_JSVR}#
