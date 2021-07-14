@@ -95,9 +95,9 @@ stages:
           action: 'deploy'
           manifests: |
             $(Build.ArtifactStagingDirectory)/service.yaml
-          kubernetesServiceConnection: 'aksclusterericklab'
+          kubernetesServiceConnection: 'ecommerce-dev-cluster'
           containers: |
-            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
+            ecommercestoreappacr.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
 
       - task: KubernetesManifest@0
         displayName: Deploy ecommerce-store-app deployment
@@ -105,9 +105,9 @@ stages:
           action: 'deploy'
           manifests: |
             $(Build.ArtifactStagingDirectory)/deployment.yaml
-          kubernetesServiceConnection: 'aksclusterericklab'
+          kubernetesServiceConnection: 'ecommerce-dev-cluster'
           containers: |
-            az400erickregistry.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
+            ecommercestoreappacr.azurecr.io/#{imageRepositoryecomm}#:#{IMAGE_ECOMM}#
 
       - task: DeleteFiles@1
         displayName: Delete ecommerce target files
@@ -144,9 +144,9 @@ stages:
           action: 'deploy'
           manifests: |
             $(Build.ArtifactStagingDirectory)/service.yaml
-          kubernetesServiceConnection: 'aksclusterericklab'
+          kubernetesServiceConnection: 'ecommerce-dev-cluster'
           containers: |
-            az400erickregistry.azurecr.io/#{imageRepositoryjsvr}#:#{IMAGE_JSVR}#
+            ecommercestoreappacr.azurecr.io/#{imageRepositoryjsvr}#:#{IMAGE_JSVR}#
 
       - task: KubernetesManifest@0
         displayName: Deploy json-server deployment
@@ -154,9 +154,9 @@ stages:
           action: 'deploy'
           manifests: |
             $(Build.ArtifactStagingDirectory)/deployment.yaml
-          kubernetesServiceConnection: 'aksclusterericklab'
+          kubernetesServiceConnection: 'ecommerce-dev-cluster'
           containers: |
-            az400erickregistry.azurecr.io/#{imageRepositoryjsvr}#:#{IMAGE_JSVR}#
+            ecommercestoreappacr.azurecr.io/#{imageRepositoryjsvr}#:#{IMAGE_JSVR}#
 
       - task: DeleteFiles@1
         displayName: Delete jserver target files
