@@ -10,12 +10,12 @@ trigger:
 variables:
 # For ecommerce
   imageRepositoryecomm: 'ecommerce-store-app'
-  containerRegistryecomm: 'Erick Container Registry'
+  containerRegistryecomm: 'ecommercestoreappacr'
   dockerfilePathecomm: '**/ecommerce.dockerfile'
   IMAGE_ECOMM: '$(Build.BuildId)'
 # For Json Server
   imageRepositoryjsvr: 'json-server'
-  containerRegistryjsvr: 'Erick Container Registry'
+  containerRegistryjsvr: 'ecommercestoreappacr'
   dockerfilePathjsvr: '**/jserver.dockerfile'
   IMAGE_JSVR: '$(Build.BuildId)'
 
