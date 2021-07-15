@@ -8,7 +8,7 @@ export function loadOffers(): Promise<OfertaModel[]> {
     headers: getHeaders()
   };
 
-  return fetch('http://20.81.94.224:3003/store', payload)
+  return fetch('http://20.81.29.251:3003/store', payload)
     .then(response => response.json());
 }
 
